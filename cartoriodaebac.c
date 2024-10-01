@@ -57,8 +57,40 @@ int registro()//Função responsável para cadastrar os usuários no sistema.
 	file = fopen(arquivo, "a");//abre o arquivo e atualiza
 	fprintf(file,cargo);//adiciona o cargo ao arquivo junto ao resto dos dados fornecidos pelo usuário
 	fclose(file);// fecha o arquivo
+	printf("Usuário cadastrado com sucesso!\n");
+	
+	///Decisão do usuário de voltar ao menu ou cadastrar mais usuários no registro.
+	
+	    int opcao=0;
 
-    system("pause");//termina o cadastro
+		system("cls");
+	    printf("Deseja cadastrar mais usuários?\n");
+	    printf("Digite a opção abaixo para continuar ou voltar ao menu.\n\n");
+	    printf("=------------------------------=\n");
+	    printf("1- Cadastrar mais usuários.\n");
+	    printf("2- Voltar ao menu principal.\n");
+	    printf("=------------------------------=\n\n");
+	    scanf("%d", &opcao);
+	    
+	    switch(opcao)
+	    {
+	    	case 1:
+	    	system("cls");
+	    	registro();
+	    	break;
+	    	
+	    	case 2:
+	    	system("cls");
+	    	printf("Obrigado por se cadastrar!\n\n");
+	    	system("pause");
+	    	break;
+	    	
+	    	default:
+	    	printf("Por favor, digite uma opção válida!");
+	    	break;
+		}
+
+    //termina o cadastro
 	
 }
 
@@ -115,7 +147,8 @@ int deletar()//Função de deletar usuário
     else//caso seja encontrado
 	{
         printf("O usuário foi apagado com sucesso!\n");
-        system("pause");    
+        system("pause");
+		return 0;    
 	}
 	
 	fclose(file);
@@ -137,9 +170,12 @@ int main()//Função main
 	    printf("\t### Cartório da EBAC ###\n");//Início do menu
 	    printf("[Este Software é de livre uso, fornecido e desenvolvido por e para os alunos.]\n\n");
 	    printf("Por favor, escolha a opção desejada abaixo: \n\n");
+	    printf("=------------------------------=\n");
 	    printf("\t1 - Registrar nome(s).\n");
 	    printf("\t2 - Consultar nome(s).\n");
-	    printf("\t3 - Deletar nome(s). \n\n");
+	    printf("\t3 - Deletar nome(s). \n");
+	    printf("=------------------------------=\n\n");
+	    printf("\t4 - Sair do sistema. \n\n");
 		printf("Digite a opção desejada: ");//Final do menu
 	
 	scanf("%d", &opcao);//armazenamento de dados do usuário
@@ -159,6 +195,11 @@ int main()//Função main
         case 3:
         deletar();
         break;  
+        
+        case 4:
+        printf("### Obrigado por utilizar o sistema! ####\n\n");
+        return 0;
+        break;
         
         default://caso o usuário escolha uma opção inexistente
         printf("Selecione uma opção válida!\n");
