@@ -158,54 +158,67 @@ int deletar()//Função de deletar usuário
 
 int main()//Função main
 {
+	setlocale(LC_ALL, "Portuguese");//Definindo linguagem
 	int opcao=0;//Definindo variáveis
 	int laco=1;//Variável pra repetição do laço
+	char senhadigitada[20]="a"; //Variável para a senha digitada na tela de login
 	
-	for(laco=1;laco=1;)
+	//Tela de login de adminstrador para acessar o programa
+	printf("\t### Cartório da EBAC ###\n");
+	printf("    =------------------------------=\n\n");
+	printf("Por favor, digite a sua senha abaixo para acessar como administrador:\n");
+	scanf("%s",senhadigitada);
+	
+	if(strcmp(senhadigitada, "admin")==0)//Caso a senha inserida seja correta
 	{
-	    system("cls");
+	
+	    for(laco=1;laco=1;)
+	    {
+	        system("cls");
 	    
-	    setlocale(LC_ALL, "Portuguese");//Definindo linguagem
+	    
 	
-	    printf("\t### Cartório da EBAC ###\n");//Início do menu
-	    printf("[Este Software é de livre uso, fornecido e desenvolvido por e para os alunos.]\n\n");
-	    printf("Por favor, escolha a opção desejada abaixo: \n\n");
-	    printf("=------------------------------=\n");
-	    printf("\t1 - Registrar nome(s).\n");
-	    printf("\t2 - Consultar nome(s).\n");
-	    printf("\t3 - Deletar nome(s). \n");
-	    printf("=------------------------------=\n\n");
-	    printf("\t4 - Sair do sistema. \n\n");
-		printf("Digite a opção desejada: ");//Final do menu
+	        printf("\t### Cartório da EBAC ###\n");//Início do menu
+	        printf("[Este Software é de livre uso, fornecido e desenvolvido por e para os alunos.]\n\n");
+	        printf("Por favor, escolha a opção desejada abaixo: \n\n");
+	        printf("=------------------------------=\n");
+	        printf("\t1 - Registrar nome(s).\n");
+	        printf("\t2 - Consultar nome(s).\n");
+	        printf("\t3 - Deletar nome(s). \n");
+	        printf("=------------------------------=\n\n");
+	        printf("\t4 - Sair do sistema. \n\n");
+		    printf("Digite a opção desejada: ");//Final do menu
 	
-	scanf("%d", &opcao);//armazenamento de dados do usuário
+	        scanf("%d", &opcao);//armazenamento de dados do usuário
 	
-	system("cls");//responsável por limpar a tela
-	
-    switch(opcao)//Seleção de opções do menu/ida e volta para a tela inicial caso opção inválida.
-    {
-    	case 1:
-        registro();//responsável por chamar as funções
-        break;
+	        system("cls");//responsável por limpar a tela
+	 
+            switch(opcao)//Seleção de opções do menu/ida e volta para a tela inicial caso opção inválida.
+                {
+    	            case 1:
+                    registro();//responsável por chamar as funções
+                    break;
         
-        case 2:
-        consulta();
-        break;
+                    case 2:
+                    consulta();
+                    break;
         
-        case 3:
-        deletar();
-        break;  
+                    case 3:
+                    deletar();
+                    break;  
         
-        case 4:
-        printf("### Obrigado por utilizar o sistema! ####\n\n");
-        return 0;
-        break;
+                    case 4:
+                    printf("### Obrigado por utilizar o sistema! ####\n\n");
+                    return 0;
+                    break;
         
-        default://caso o usuário escolha uma opção inexistente
-        printf("Selecione uma opção válida!\n");
-        system("pause");
-        break;
-	}
+                    default://caso o usuário escolha uma opção inexistente
+                    printf("Selecione uma opção válida!\n");
+                    system("pause");
+                    break;
+	            }
 	}
 }
-
+    else//Caso a senha inserida não seja correta
+        printf("Senha incorreta!");
+}
